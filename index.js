@@ -1193,6 +1193,9 @@ io.on('connection', function (socket) {
 
         if (data.indexOf('JOG') != 0) {
           // Jog The Machine
+          var opts = data.split(':');
+          var dist = 1;
+          socket.emit('jog', opts[1] + ',' + dist);
         }
       }); // end of parser.on(data)
     }
