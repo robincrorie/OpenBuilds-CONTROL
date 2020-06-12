@@ -31,7 +31,7 @@
   "scripts": {
     "start": "echo \"Please run 'npm run dist' to create a local installer\" ",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "dist": "electron-builder --ia32 --x64",
+    "dist": "electron-builder --win --ia32 --x64",
     "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [

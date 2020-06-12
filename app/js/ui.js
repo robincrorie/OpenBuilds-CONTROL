@@ -1,129 +1,233 @@
 // Toolbar with USB port/connect/disconnect
 function setConnectBar(val, status) {
-  if (val == 0) { // Not Connected Yet
+  if (val == 0) {
+    // Not Connected Yet
     // Status Badge
-    $('#connectStatus').html("Port: Not Connected");
+    $('#connectStatus').html('Port: Not Connected');
     // Connect/Disconnect Button
-    $("#disconnectBtn").hide();
-    $("#flashBtn").hide();
+    $('#disconnectBtn').hide();
+    $('#flashBtn').hide();
     $('#portUSB').parent().show();
-    $("#connectBtn").show();
-    $("#driverBtn").show();
-    if ($('#portUSB').val() != "") {
-      $("#connectBtn").attr('disabled', false);
+    $('#connectBtn').show();
+    $('#driverBtn').show();
+    if ($('#portUSB').val() != '') {
+      $('#connectBtn').attr('disabled', false);
     } else {
-      $("#connectBtn").attr('disabled', true);
+      $('#connectBtn').attr('disabled', true);
     }
     // Port Dropdown
-    if ($('#portUSB').val() != "") {
-      $('#portUSB').parent(".select").removeClass('disabled')
+    if ($('#portUSB').val() != '') {
+      $('#portUSB').parent('.select').removeClass('disabled');
     } else {
-      $('#portUSB').parent(".select").addClass('disabled')
+      $('#portUSB').parent('.select').addClass('disabled');
     }
-    $('#portUSB').parent(".select").addClass('success')
-    $('#portUSB').parent(".select").removeClass('alert')
-    $('.macrobtn').addClass('disabled')
+    $('#portUSB').parent('.select').addClass('success');
+    $('#portUSB').parent('.select').removeClass('alert');
+    $('.macrobtn').addClass('disabled');
     // Set Port Dropdown to Current Value
     // Not applicable to Status 0 as its set by populatePortsMenu();
-
-  } else if (val == 1 || val == 2) { // Connected, but not Playing yet
+  } else if (val == 1 || val == 2) {
+    // Connected, but not Playing yet
     // Status Badge
-    $('#connectStatus').html("Port: Connected");
+    $('#connectStatus').html('Port: Connected');
     // Connect/Disconnect Button
-    $("#connectBtn").hide();
-    $("#driverBtn").hide();
+    $('#connectBtn').hide();
+    $('#driverBtn').hide();
     $('#portUSB').parent().hide();
-    $("#connectBtn").attr('disabled', false);
-    $("#disconnectBtn").show();
-    $("#flashBtn").hide();
+    $('#connectBtn').attr('disabled', false);
+    $('#disconnectBtn').show();
+    $('#flashBtn').hide();
 
     // Port Dropdown
-    $('#portUSB').parent(".select").addClass('disabled')
-    $('#portUSB').parent(".select").removeClass('success')
-    $('#portUSB').parent(".select").addClass('alert')
+    $('#portUSB').parent('.select').addClass('disabled');
+    $('#portUSB').parent('.select').removeClass('success');
+    $('#portUSB').parent('.select').addClass('alert');
     // Set Port Dropdown to Current Value
-    $("#portUSB").val(status.comms.interfaces.activePort);
-    $('.macrobtn').removeClass('disabled')
-
-  } else if (val == 3) { // Busy Streaming GCODE
+    $('#portUSB').val(status.comms.interfaces.activePort);
+    $('.macrobtn').removeClass('disabled');
+  } else if (val == 3) {
+    // Busy Streaming GCODE
     // Status Badge
-    $('#connectStatus').html("Port: Connected");
+    $('#connectStatus').html('Port: Connected');
     // Connect/Disconnect Button
-    $("#connectBtn").hide();
-    $("#driverBtn").hide();
+    $('#connectBtn').hide();
+    $('#driverBtn').hide();
     $('#portUSB').parent().hide();
-    $("#connectBtn").attr('disabled', false);
-    $("#disconnectBtn").show();
-    $("#flashBtn").hide();
+    $('#connectBtn').attr('disabled', false);
+    $('#disconnectBtn').show();
+    $('#flashBtn').hide();
     // Port Dropdown
-    $('#portUSB').parent(".select").addClass('disabled')
-    $('#portUSB').parent(".select").removeClass('success')
-    $('#portUSB').parent(".select").addClass('alert')
+    $('#portUSB').parent('.select').addClass('disabled');
+    $('#portUSB').parent('.select').removeClass('success');
+    $('#portUSB').parent('.select').addClass('alert');
     // Set Port Dropdown to Current Value
-    $("#portUSB").val(status.comms.interfaces.activePort);
-    $('.macrobtn').addClass('disabled')
-
-  } else if (val == 4) { // Paused
+    $('#portUSB').val(status.comms.interfaces.activePort);
+    $('.macrobtn').addClass('disabled');
+  } else if (val == 4) {
+    // Paused
     // Status Badge
-    $('#connectStatus').html("Port: Connected");
+    $('#connectStatus').html('Port: Connected');
     // Connect/Disconnect Button
-    $("#connectBtn").hide();
-    $("#driverBtn").hide();
+    $('#connectBtn').hide();
+    $('#driverBtn').hide();
     $('#portUSB').parent().hide();
-    $("#connectBtn").attr('disabled', false);
-    $("#disconnectBtn").show();
-    $("#flashBtn").hide();
+    $('#connectBtn').attr('disabled', false);
+    $('#disconnectBtn').show();
+    $('#flashBtn').hide();
     // Port Dropdown
-    $('#portUSB').parent(".select").addClass('disabled')
-    $('#portUSB').parent(".select").removeClass('success')
-    $('#portUSB').parent(".select").addClass('alert')
+    $('#portUSB').parent('.select').addClass('disabled');
+    $('#portUSB').parent('.select').removeClass('success');
+    $('#portUSB').parent('.select').addClass('alert');
     // Set Port Dropdown to Current Value
-    $("#portUSB").val(status.comms.interfaces.activePort);
-    $('.macrobtn').addClass('disabled')
-
-  } else if (val == 5) { // Alarm State
+    $('#portUSB').val(status.comms.interfaces.activePort);
+    $('.macrobtn').addClass('disabled');
+  } else if (val == 5) {
+    // Alarm State
     // Status Badge
-    $('#connectStatus').html("Port: Connected");
+    $('#connectStatus').html('Port: Connected');
     // Connect/Disconnect Button
-    $("#connectBtn").hide();
-    $("#driverBtn").hide();
+    $('#connectBtn').hide();
+    $('#driverBtn').hide();
     $('#portUSB').parent().hide();
-    $("#connectBtn").attr('disabled', false);
-    $("#disconnectBtn").show();
-    $("#flashBtn").hide();
+    $('#connectBtn').attr('disabled', false);
+    $('#disconnectBtn').show();
+    $('#flashBtn').hide();
     // Port Dropdown
-    $('#portUSB').parent(".select").addClass('disabled')
-    $('#portUSB').parent(".select").removeClass('success')
-    $('#portUSB').parent(".select").addClass('alert')
+    $('#portUSB').parent('.select').addClass('disabled');
+    $('#portUSB').parent('.select').removeClass('success');
+    $('#portUSB').parent('.select').addClass('alert');
     // Set Port Dropdown to Current Value
-    $("#portUSB").val(status.comms.interfaces.activePort);
-    $('.macrobtn').addClass('disabled')
-
-  } else if (val == 6) { // Firmware Upgrade State
+    $('#portUSB').val(status.comms.interfaces.activePort);
+    $('.macrobtn').addClass('disabled');
+  } else if (val == 6) {
+    // Firmware Upgrade State
     // Status Badge
-    $('#connectStatus').html("Port: Flashing");
+    $('#connectStatus').html('Port: Flashing');
     // Connect/Disconnect Button
-    $("#connectBtn").hide();
-    $("#driverBtn").hide();
+    $('#connectBtn').hide();
+    $('#driverBtn').hide();
     $('#portUSB').parent().hide();
-    $("#connectBtn").attr('disabled', false);
-    $("#disconnectBtn").hide();
-    $("#flashBtn").show();
+    $('#connectBtn').attr('disabled', false);
+    $('#disconnectBtn').hide();
+    $('#flashBtn').show();
     // Port Dropdown
-    $('#portUSB').parent(".select").addClass('disabled')
-    $('#portUSB').parent(".select").removeClass('success')
-    $('#portUSB').parent(".select").addClass('alert')
+    $('#portUSB').parent('.select').addClass('disabled');
+    $('#portUSB').parent('.select').removeClass('success');
+    $('#portUSB').parent('.select').addClass('alert');
     // Set Port Dropdown to Current Value
-    $("#portUSB").val(status.comms.interfaces.activePort);
-    $('.macrobtn').addClass('disabled')
+    $('#portUSB').val(status.comms.interfaces.activePort);
+    $('.macrobtn').addClass('disabled');
+  }
+}
 
+// Pendant Toolbar with USB port/connect/disconnect
+function setConnectBarPendant(val, status) {
+  if (val == 0) {
+    // Not Connected Yet
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Not Connected');
+    // Connect/Disconnect Button
+    $('#disconnectBtnPendant').hide();
+    $('#portUSBPendant').parent().show();
+    $('#connectBtnPendant').show();
+    if ($('#portUSBPendant').val() != '') {
+      $('#connectBtnPendant').attr('disabled', false);
+    } else {
+      $('#conneconnectBtnPendantctBtn').attr('disabled', true);
+    }
+    // Port Dropdown
+    if ($('#portUSBPendant').val() != '') {
+      $('#portUSBPendant').parent('.select').removeClass('disabled');
+    } else {
+      $('#portUSBPendant').parent('.select').addClass('disabled');
+    }
+    $('#portUSBPendant').parent('.select').addClass('success');
+    $('#portUSBPendant').parent('.select').removeClass('alert');
+    // Set Port Dropdown to Current Value
+    // Not applicable to Status 0 as its set by populatePortsMenu();
+  } else if (val == 1 || val == 2) {
+    // Connected, but not Playing yet
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Connected');
+    // Connect/Disconnect Button
+    $('#connectBtnPendant').hide();
+    $('#portUSBPendant').parent().hide();
+    $('#connectBtnPendant').attr('disabled', false);
+    $('#disconnectBtnPendant').show();
 
+    // Port Dropdown
+    $('#portUSBPendant').parent('.select').addClass('disabled');
+    $('#portUSBPendant').parent('.select').removeClass('success');
+    $('#portUSBPendant').parent('.select').addClass('alert');
+    // Set Port Dropdown to Current Value
+    $('#portUSBPendant').val(status.comms.interfaces.activePort);
+  } else if (val == 3) {
+    // Busy Streaming GCODE
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Connected');
+    // Connect/Disconnect Button
+    $('#connectBtnPendant').hide();
+    $('#portUSBPendant').parent().hide();
+    $('#connectBtnPendant').attr('disabled', false);
+    $('#disconnectBtnPendant').show();
+    // Port Dropdown
+    $('#portUSBPendant').parent('.select').addClass('disabled');
+    $('#portUSBPendant').parent('.select').removeClass('success');
+    $('#portUSBPendant').parent('.select').addClass('alert');
+    // Set Port Dropdown to Current Value
+    $('#portUSBPendant').val(status.comms.interfaces.activePort);
+  } else if (val == 4) {
+    // Paused
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Connected');
+    // Connect/Disconnect Button
+    $('#connectBtnPendant').hide();
+    $('#portUSBPendant').parent().hide();
+    $('#connectBtnPendant').attr('disabled', false);
+    $('#disconnectBtnPendant').show();
+    // Port Dropdown
+    $('#portUSBPendant').parent('.select').addClass('disabled');
+    $('#portUSBPendant').parent('.select').removeClass('success');
+    $('#portUSBPendant').parent('.select').addClass('alert');
+    // Set Port Dropdown to Current Value
+    $('#portUSBPendant').val(status.comms.interfaces.activePort);
+  } else if (val == 5) {
+    // Alarm State
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Connected');
+    // Connect/Disconnect Button
+    $('#connectBtnPendant').hide();
+    $('#portUSBPendant').parent().hide();
+    $('#connectBtnPendant').attr('disabled', false);
+    $('#disconnectBtnPendant').show();
+    // Port Dropdown
+    $('#portUSBPendant').parent('.select').addClass('disabled');
+    $('#portUSBPendant').parent('.select').removeClass('success');
+    $('#portUSBPendant').parent('.select').addClass('alert');
+    // Set Port Dropdown to Current Value
+    $('#portUSBPendant').val(status.comms.interfaces.activePort);
+  } else if (val == 6) {
+    // Firmware Upgrade State
+    // Status Badge
+    $('#connectStatusPendant').html('Port: Flashing');
+    // Connect/Disconnect Button
+    $('#connectBtnPendant').hide();
+    $('#portUSBPendant').parent().hide();
+    $('#connectBtnPendant').attr('disabled', false);
+    $('#disconnectBtnPendant').hide();
+    // Port Dropdown
+    $('#portUSBPendant').parent('.select').addClass('disabled');
+    $('#portUSBPendant').parent('.select').removeClass('success');
+    $('#portUSBPendant').parent('.select').addClass('alert');
+    // Set Port Dropdown to Current Value
+    $('#portUSBPendant').val(status.comms.interfaces.activePort);
   }
 }
 
 // Toolbar with play/pause/stop
 function setControlBar(val, status) {
-  if (val == 0) { // Not Connected Yet
+  if (val == 0) {
+    // Not Connected Yet
     if (toolchanges && toolchanges.length) {
       $('#runToolsBtn').hide().attr('disabled', true);
       $('#runBtn').hide().attr('disabled', true);
@@ -145,29 +249,40 @@ function setControlBar(val, status) {
         $('#homeBtn').hide().attr('disabled', true);
       }
     }
-    $('.estop').hide()
-  } else if (val == 1 || val == 2) { // Connected, but not Playing yet
+    $('.estop').hide();
+  } else if (val == 1 || val == 2) {
+    // Connected, but not Playing yet
     $('#grblProbeMenu').show().attr('disabled', false);
     if (typeof ace !== 'undefined') {
       if (toolchanges.length) {
-        $('#runToolsBtn').show().attr('disabled', editor.session.getLength() < 2);
-        $('#runBtn').hide().attr('disabled', editor.session.getLength() < 2);
+        $('#runToolsBtn')
+          .show()
+          .attr('disabled', editor.session.getLength() < 2);
+        $('#runBtn')
+          .hide()
+          .attr('disabled', editor.session.getLength() < 2);
         if (webgl) {
-          $('#chkSize').show().attr('disabled', editor.session.getLength() < 2);
+          $('#chkSize')
+            .show()
+            .attr('disabled', editor.session.getLength() < 2);
         } else {
           $('#chkSize').show().attr('disabled', true);
         }
-
       } else {
-        $('#runToolsBtn').hide().attr('disabled', editor.session.getLength() < 2);
-        $('#runBtn').show().attr('disabled', editor.session.getLength() < 2);
+        $('#runToolsBtn')
+          .hide()
+          .attr('disabled', editor.session.getLength() < 2);
+        $('#runBtn')
+          .show()
+          .attr('disabled', editor.session.getLength() < 2);
         if (webgl) {
-          $('#chkSize').show().attr('disabled', editor.session.getLength() < 2);
+          $('#chkSize')
+            .show()
+            .attr('disabled', editor.session.getLength() < 2);
         } else {
           $('#chkSize').show().attr('disabled', true);
         }
       }
-
     } else {
       $('#runBtn').show().attr('disabled', false);
       $('#runToolsBtn').hide().attr('disabled', false);
@@ -184,8 +299,9 @@ function setControlBar(val, status) {
         $('#homeBtn').show().attr('disabled', true);
       }
     }
-    $('.estop').show()
-  } else if (val == 3) { // Busy Streaming GCODE
+    $('.estop').show();
+  } else if (val == 3) {
+    // Busy Streaming GCODE
     $('#grblProbeMenu').show().attr('disabled', true);
 
     if (toolchanges.length) {
@@ -208,8 +324,9 @@ function setControlBar(val, status) {
         $('#homeBtn').show().attr('disabled', true);
       }
     }
-    $('.estop').show()
-  } else if (val == 4) { // Paused
+    $('.estop').show();
+  } else if (val == 4) {
+    // Paused
     $('#grblProbeMenu').show().attr('disabled', true);
 
     if (toolchanges.length) {
@@ -232,8 +349,9 @@ function setControlBar(val, status) {
         $('#homeBtn').show().attr('disabled', true);
       }
     }
-    $('.estop').show()
-  } else if (val == 5) { // Alarm State
+    $('.estop').show();
+  } else if (val == 5) {
+    // Alarm State
     $('#grblProbeMenu').show().attr('disabled', true);
 
     if (toolchanges.length) {
@@ -257,8 +375,9 @@ function setControlBar(val, status) {
         $('#homeBtn').show().attr('disabled', true);
       }
     }
-    $('.estop').show()
-  } else if (val == 6) { // Firmware Upgrade State
+    $('.estop').show();
+  } else if (val == 6) {
+    // Firmware Upgrade State
     $('#grblProbeMenu').show().attr('disabled', true);
 
     if (toolchanges.length) {
@@ -281,12 +400,13 @@ function setControlBar(val, status) {
         $('#homeBtn').show().attr('disabled', true);
       }
     }
-    $('.estop').hide()
+    $('.estop').hide();
   }
 }
 
 function setJogPanel(val, status) {
-  if (val == 0) { // Not Connected Yet
+  if (val == 0) {
+    // Not Connected Yet
     // Show panel and resize editor
     // $("#jogcontrols").slideUp(20);
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
@@ -295,7 +415,7 @@ function setJogPanel(val, status) {
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     // $('#console').scrollTop($("#console")[0].scrollHeight - $("#console").height());
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     $('.jogbtn').attr('disabled', true);
     if ($('#jograte').attr('disabled')) {
@@ -313,8 +433,8 @@ function setJogPanel(val, status) {
         }
       }
     }
-
-  } else if (val == 1 || val == 2) { // Connected, but not Playing yet
+  } else if (val == 1 || val == 2) {
+    // Connected, but not Playing yet
     // Show panel and resize editor
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#macros").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
@@ -322,7 +442,7 @@ function setJogPanel(val, status) {
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     // $('#console').scrollTop($("#console")[0].scrollHeight - $("#console").height());
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     $('.jogbtn').attr('disabled', false);
     if ($('#jograte').attr('disabled')) {
@@ -338,14 +458,15 @@ function setJogPanel(val, status) {
         }
       }
     }
-  } else if (val == 3) { // Busy Streaming GCODE
+  } else if (val == 3) {
+    // Busy Streaming GCODE
     // Show panel and resize editor
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#macros").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#console").css('height', 'calc(' + 100 + 'vh - ' + 505 + 'px)');
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     // $("#jogcontrols").slideDown(20);
     $('.jogbtn').attr('disabled', true);
@@ -361,14 +482,15 @@ function setJogPanel(val, status) {
         }
       }
     }
-  } else if (val == 4) { // Paused
+  } else if (val == 4) {
+    // Paused
     // Show panel and resize editor
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#macros").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#console").css('height', 'calc(' + 100 + 'vh - ' + 505 + 'px)');
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     $('.jogbtn').attr('disabled', true);
     if (!$('#jograte').attr('disabled')) {
@@ -381,7 +503,8 @@ function setJogPanel(val, status) {
         }
       }
     }
-  } else if (val == 5) { // Alarm State
+  } else if (val == 5) {
+    // Alarm State
     // Show panel and resize editor
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
     // $("#macros").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
@@ -389,7 +512,7 @@ function setJogPanel(val, status) {
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     // $('#console').scrollTop($("#console")[0].scrollHeight - $("#console").height());
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     $('.jogbtn').attr('disabled', true);
     if (!$('#jograte').attr('disabled')) {
@@ -404,7 +527,8 @@ function setJogPanel(val, status) {
         }
       }
     }
-  } else if (val == 6) { // Firmware Upgrade State
+  } else if (val == 6) {
+    // Firmware Upgrade State
     // Show panel and resize editor
     // $("#jogcontrols").slideUp(20);
     // $("#editor").css('height', 'calc(' + 100 + 'vh - ' + 485 + 'px)');
@@ -413,7 +537,7 @@ function setJogPanel(val, status) {
     // $("#renderArea").css('height', 'calc(' + 100 + 'vh - ' + 448 + 'px)');
     // $('#console').scrollTop($("#console")[0].scrollHeight - $("#console").height());
     if (editor) {
-      editor.resize()
+      editor.resize();
     }
     $('.jogbtn').attr('disabled', true);
     if ($('#jograte').attr('disabled')) {
@@ -433,31 +557,37 @@ function setJogPanel(val, status) {
 }
 
 function setConsole(val, status) {
-  if (val == 0) { // Not Connected Yet
+  if (val == 0) {
+    // Not Connected Yet
     if (!$('#command').attr('disabled')) {
       $('#command').attr('disabled', true);
     }
-    $("#sendCommand").prop('disabled', true);
-  } else if (val == 0 || val == 2) { // Connected, but not Playing yet
-    $("#command").attr('disabled', false);
-    $("#sendCommand").prop('disabled', false);
-  } else if (val == 3) { // Busy Streaming GCODE
+    $('#sendCommand').prop('disabled', true);
+  } else if (val == 0 || val == 2) {
+    // Connected, but not Playing yet
+    $('#command').attr('disabled', false);
+    $('#sendCommand').prop('disabled', false);
+  } else if (val == 3) {
+    // Busy Streaming GCODE
     if (!$('#command').attr('disabled')) {
       $('#command').attr('disabled', true);
     }
-    $("#sendCommand").prop('disabled', true);
-  } else if (val == 4) { // Paused
+    $('#sendCommand').prop('disabled', true);
+  } else if (val == 4) {
+    // Paused
     if (!$('#command').attr('disabled')) {
       $('#command').attr('disabled', true);
     }
-    $("#sendCommand").prop('disabled', false);
-  } else if (val == 5) { // Alarm State
-    $("#command").attr('disabled', false);
-    $("#sendCommand").prop('disabled', false);
-  } else if (val == 6) { // Firmware Upgrade State
+    $('#sendCommand').prop('disabled', false);
+  } else if (val == 5) {
+    // Alarm State
+    $('#command').attr('disabled', false);
+    $('#sendCommand').prop('disabled', false);
+  } else if (val == 6) {
+    // Firmware Upgrade State
     if (!$('#command').attr('disabled')) {
       $('#command').attr('disabled', true);
     }
-    $("#sendCommand").prop('disabled', true);
+    $('#sendCommand').prop('disabled', true);
   }
 }

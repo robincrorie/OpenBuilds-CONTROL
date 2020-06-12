@@ -340,6 +340,26 @@
                 </button>
                 <span class="title">E-Stop</span>
               </div>
+
+              <div class="group">
+                <div class="form-group">
+                  <form class="form">
+                    <select data-prepend="&nbsp;<i class='fab fa-usb'></i>" class="success" data-role="select" data-filter="false"
+                      id="portUSBPendant" disabled>
+                      <option value="">Waiting for USB</option>
+                    </select>
+                    <button class="button small success float-right" onclick="selectPortPendant()" id="connectBtnPendant" type="button"
+                      style="margin: 5px;" disabled>Connect</button>
+                    <button class="button alert" style="display:none;" onclick="closePortPendant()" id="disconnectBtnPendant" type="button"
+                      style="margin: 5px;">Disconnect</button>
+                    <button class="button small secondary disabled" disabled style="display:none;" id="flashBtnPendant" type="button"
+                      style="margin: 5px;">please wait...</button>
+                  </form>
+
+                </div>
+                <span class="title">Pendant Interface</span>
+              </div>
+
               <div class="group">
                 <button class="ribbon-button" onclick="socket.emit('openbuilds', true);">
                   <span class="icon">
@@ -349,6 +369,8 @@
                 </button>
                 <span class="title">Visit</span>
               </div>
+
+              <div class="group"></div>
             </div>
 
             <div class="section" id="section-troubleshooting">
@@ -896,12 +918,20 @@
                           <td><span class="tally bg-openbuilds fg-white" id="commblocked">NOCOMM</span></td>
                         </tr>
                         <tr>
-                          <td>Connection Status</td>
+                          <td>Machine Status</td>
                           <td><span class="tally bg-openbuilds fg-white" id="commstatus">NOCOMM</span></td>
                         </tr>
                         <tr>
-                          <td>Connected To</td>
+                          <td>Machine Connected To</td>
                           <td><span class="tally bg-openbuilds fg-white" id="activeportstatus">NOCOMM</span></td>
+                        </tr>
+                        <tr>
+                          <td>Pendant Status</td>
+                          <td><span class="tally bg-openbuilds fg-white" id="pendantstatus">NOCOMM</span></td>
+                        </tr>
+                        <tr>
+                          <td>Pendant Connected To</td>
+                          <td><span class="tally bg-openbuilds fg-white" id="pendantportstatus">NOCOMM</span></td>
                         </tr>
                         <tr>
                           <td>Serial Queue</td>
