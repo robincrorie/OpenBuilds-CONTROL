@@ -814,8 +814,9 @@ io.on('connection', function (socket) {
         // console.log(data)
         var command = sentBuffer[0];
 
-        if (data.indexOf('<') != 0) {
+        if (data.indexOf('<Idle') != 0) {
           debug_log('data:', data);
+          console.log(data);
         }
 
         // Grbl $I parser
@@ -1183,7 +1184,7 @@ io.on('connection', function (socket) {
         status.comms.connectionStatusPendant = 0;
       }); // end port.onclose
 
-      parser.on('data', function (data) {
+      parser.on('data', (data) => {
         // console.log('Pendant parser.on', data);
         var command = sentBuffer[0];
 
@@ -1196,7 +1197,9 @@ io.on('connection', function (socket) {
           // Jog The Machine
           var opts = data.split(':');
           var dist = 1;
-          socket.emit('jog', opts[1] + ',' + dist);
+          console.log('Jog Machine: jog', '' + opts[1] + ',' + dist);
+          // socket.emit('jog', opts[1] + ',' + dist);
+          jog('' + opts[1] + ',' + dist + ',' + 4000);
         }
       }); // end of parser.on(data)
     }
@@ -1308,44 +1311,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('jog', function (data) {
-    debug_log('Jog ' + data);
-    if (status.comms.connectionStatus > 0) {
-      data = data.split(',');
-      var dir = data[0];
-      var dist = parseFloat(data[1]);
-      var feed;
-      if (data.length > 2) {
-        feed = parseInt(data[2]);
-        if (feed) {
-          feed = 'F' + feed;
-        }
-      }
-      if (dir && dist && feed) {
-        debug_log(
-          'Adding jog commands to queue. Firmw=' +
-            status.machine.firmware.type +
-            ', blocked=' +
-            status.comms.blocked +
-            ', paused=' +
-            status.comms.paused +
-            ', Q=' +
-            gcodeQueue.length
-        );
-        switch (status.machine.firmware.type) {
-          case 'grbl':
-            addQToEnd('$J=G91G21' + dir + dist + feed);
-            send1Q();
-            break;
-          default:
-            debug_log('ERROR: Unknown firmware!');
-            break;
-        }
-      } else {
-        debug_log('ERROR: Invalid params!');
-      }
-    } else {
-      debug_log('ERROR: Machine connection not open!');
-    }
+    jog(data);
   });
 
   socket.on('jogXY', function (data) {
@@ -1766,6 +1732,62 @@ io.on('connection', function (socket) {
     }
   });
 });
+
+function jog(data) {
+  debug_log('Jog ' + data);
+  console.log('Jog ' + data);
+  if (status.comms.connectionStatus > 0) {
+    data = data.split(',');
+    var dir = data[0];
+    var dist = parseFloat(data[1]);
+    var feed;
+    if (data.length > 2) {
+      feed = parseInt(data[2]);
+      if (feed) {
+        feed = 'F' + feed;
+      }
+    }
+    console.log('dir, dist, feed', dir, dist, feed);
+    if (dir && dist && feed) {
+      debug_log(
+        'Adding jog commands to queue. Firmw=' +
+          status.machine.firmware.type +
+          ', blocked=' +
+          status.comms.blocked +
+          ', paused=' +
+          status.comms.paused +
+          ', Q=' +
+          gcodeQueue.length
+      );
+      console.log(
+        'Adding jog commands to queue. Firmw=' +
+          status.machine.firmware.type +
+          ', blocked=' +
+          status.comms.blocked +
+          ', paused=' +
+          status.comms.paused +
+          ', Q=' +
+          gcodeQueue.length
+      );
+      switch (status.machine.firmware.type) {
+        case 'grbl':
+          console.log('Sending Gcode::: $J=G91G21' + dir + dist + feed);
+          addQToEnd('$J=G91G21' + dir + dist + feed);
+          send1Q();
+          break;
+        default:
+          debug_log('ERROR: Unknown firmware!');
+          break;
+      }
+    } else {
+      debug_log('ERROR: Invalid params!');
+      console.log('ERROR: Invalid params!');
+    }
+  } else {
+    debug_log('ERROR: Machine connection not open!');
+    console.log('ERROR: Machine connection not open!');
+  }
+}
 
 function readFile(path) {
   if (path) {
