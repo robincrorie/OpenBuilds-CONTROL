@@ -1189,9 +1189,10 @@ io.on('connection', function (socket) {
 
         if (data.indexOf('<') != 0) {
           debug_log('data:', data);
+          console.log(data);
         }
 
-        if (data.indexOf('JOG') != 0) {
+        if (data.indexOf('JOG') > -1) {
           // Jog The Machine
           var opts = data.split(':');
           var dist = 1;
